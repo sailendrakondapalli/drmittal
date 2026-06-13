@@ -17,22 +17,26 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex items-center justify-center overflow-hidden"
+      className="relative flex items-center justify-center overflow-hidden w-full"
       style={{ minHeight: '100svh' }}
     >
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=1920&q=80"
-          alt="Professional hair transplant clinic"
-          className="w-full h-full object-cover object-center"
-          loading="eager"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/92 via-gray-900/80 to-teal-950/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-transparent to-transparent" />
-      </div>
+      {/* ── Background: CSS bg-image so it always fills the section ── */}
+      <div
+        className="absolute inset-0 z-0 w-full h-full"
+        style={{
+          backgroundImage:
+            'url(https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=1920&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'scroll', // 'fixed' breaks on iOS Safari
+        }}
+      />
+      {/* Dark overlays */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-gray-950/92 via-gray-900/80 to-teal-950/60" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-gray-950/70 via-transparent to-transparent" />
 
-      {/* Content — compact on mobile */}
+      {/* ── Content ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-6 sm:pt-24 sm:pb-12 lg:pt-28 lg:pb-16">
         <div className="max-w-3xl">
 
@@ -68,10 +72,10 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-sm sm:text-lg text-amber-400 font-semibold mb-2 sm:mb-3 leading-snug"
           >
-            Advanced FUE, DHI & Sapphire Hair Transplant Surgery with Premium Hair & Skin Laser Treatments.
+            Advanced FUE, DHI & Sapphire Hair Transplant Surgery with Premium Hair &amp; Skin Laser Treatments.
           </motion.p>
 
-          {/* Description — hidden on small phones, shown from sm up */}
+          {/* Description — full on sm+, short on mobile */}
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -81,8 +85,6 @@ export default function Hero() {
             Regain your hair. Restore your youth. Rebuild your confidence with scientifically advanced
             and safe procedures performed by experienced experts.
           </motion.p>
-
-          {/* Description short version — mobile only */}
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -92,7 +94,7 @@ export default function Hero() {
             Safe, proven procedures by experienced experts. Regain your confidence.
           </motion.p>
 
-          {/* Buttons — side by side on mobile */}
+          {/* Buttons — row on all sizes */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -135,17 +137,17 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 + i * 0.08 }}
-                className="glass rounded-xl sm:rounded-2xl px-2 py-3 sm:p-4 text-center"
+                className="glass rounded-xl sm:rounded-2xl px-1 py-3 sm:p-4 text-center"
               >
                 <p className="text-sm sm:text-xl font-black text-white leading-tight">{stat.value}</p>
-                <p className="text-[10px] sm:text-xs text-teal-300 font-medium mt-0.5 leading-tight">{stat.label}</p>
+                <p className="text-[9px] sm:text-xs text-teal-300 font-medium mt-0.5 leading-tight">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator — hidden on mobile to save space */}
+      {/* Scroll indicator — desktop only */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

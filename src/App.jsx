@@ -30,9 +30,9 @@ export default function App() {
       </AnimatePresence>
 
       {!loading && (
-        <>
+        <div className="w-full overflow-x-hidden">
           <Navbar />
-          <main>
+          <main className="w-full overflow-x-hidden">
             <Hero />
             <WhyChooseUs />
             <DoctorProfile />
@@ -46,7 +46,7 @@ export default function App() {
           </main>
           <Footer />
           <FloatingButtons />
-        </>
+        </div>
       )}
     </>
   )
